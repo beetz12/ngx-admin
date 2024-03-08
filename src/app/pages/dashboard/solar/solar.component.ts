@@ -45,7 +45,7 @@ export class SolarComponent implements AfterViewInit, OnDestroy {
   ngAfterViewInit() {
     this.themeSubscription = this.theme.getJsTheme().pipe(delay(1)).subscribe(config => {
 
-      const solarTheme: any = config.variables.solar;
+      const solarTheme: any = config.variables?.['solar'];
 
       this.option = Object.assign({}, {
         tooltip: {
@@ -70,9 +70,9 @@ export class SolarComponent implements AfterViewInit, OnDestroy {
                     formatter: '{d}%',
                     textStyle: {
                       fontSize: '22',
-                      fontFamily: config.variables.fontSecondary,
+                      fontFamily: config.variables?.['fontSecondary'],
                       fontWeight: '600',
-                      color: config.variables.fgHeading,
+                      color: config.variables?.['fgHeading'],
                     },
                   },
                 },

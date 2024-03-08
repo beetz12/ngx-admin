@@ -20,7 +20,7 @@ import {
   FooterComponent,
   HeaderComponent,
   SearchInputComponent,
-  TinyMCEComponent,
+  // TinyMCEComponent,
 } from './components';
 import {
   CapitalizePipe,
@@ -57,7 +57,7 @@ const COMPONENTS = [
   HeaderComponent,
   FooterComponent,
   SearchInputComponent,
-  TinyMCEComponent,
+  // TinyMCEComponent,
   OneColumnLayoutComponent,
   ThreeColumnsLayoutComponent,
   TwoColumnsLayoutComponent,
@@ -80,12 +80,12 @@ export class ThemeModule {
     return {
       ngModule: ThemeModule,
       providers: [
-        ...NbThemeModule.forRoot(
+        ...(NbThemeModule.forRoot(
           {
             name: 'default',
           },
           [ DEFAULT_THEME, COSMIC_THEME, CORPORATE_THEME, DARK_THEME ],
-        ).providers,
+        ).providers || []),
       ],
     };
   }

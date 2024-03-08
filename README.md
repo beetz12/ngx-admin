@@ -1,6 +1,21 @@
-# AngularTourOfHeroes
+# fig-angular-frontend
 
+This is the new angular frontend for the fig app. It communicates with the django backend by making API calls. 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.0.
+
+##Prerequisites
+[NodeJS and npm(latest version)](https://nodejs.org/en/download)
+Angular CLI 
+```bash
+npm install -g @angular/cli
+```
+
+## Installation
+
+Run 
+```bash
+npm install
+```
 
 ## Development server
 

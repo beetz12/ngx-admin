@@ -14,8 +14,8 @@ export class SecurityCamerasComponent implements OnInit, OnDestroy {
 
   private destroy$ = new Subject<void>();
 
-  cameras: Camera[];
-  selectedCamera: Camera;
+  cameras: Camera[] = [];
+  selectedCamera!: Camera;
   isSingleView = false;
   actionSize: NbComponentSize = 'medium';
 
@@ -37,7 +37,7 @@ export class SecurityCamerasComponent implements OnInit, OnDestroy {
     this.themeService.onMediaQueryChange()
       .pipe(map(([, breakpoint]) => breakpoint.width))
       .subscribe((width: number) => {
-        this.actionSize = width > breakpoints.md ? 'medium' : 'small';
+        this.actionSize = width > breakpoints['md'] ? 'medium' : 'small' as NbComponentSize;
       });
   }
 

@@ -14,13 +14,13 @@ export class ElectricityComponent implements OnDestroy {
 
   private alive = true;
 
-  listData: Electricity[];
-  chartData: ElectricityChart[];
+  listData: Electricity[] = [];
+  chartData: ElectricityChart[] = [];
 
   type = 'week';
   types = ['week', 'month', 'year'];
 
-  currentTheme: string;
+  currentTheme: string = "";
   themeSubscription: any;
 
   constructor(private electricityService: ElectricityData,

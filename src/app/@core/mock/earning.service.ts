@@ -26,7 +26,7 @@ export class EarningService extends EarningData {
 
   private liveUpdateChartData = {
     bitcoin: {
-      liveChart: [],
+      liveChart: [] as any,
       delta: {
         up: true,
         value: 4,
@@ -34,7 +34,7 @@ export class EarningService extends EarningData {
       dailyIncome: 45895,
     },
     tether: {
-      liveChart: [],
+      liveChart: [] as any,
       delta: {
         up: false,
         value: 9,
@@ -42,7 +42,7 @@ export class EarningService extends EarningData {
       dailyIncome: 5862,
     },
     ethereum: {
-      liveChart: [],
+      liveChart: [] as any,
       delta: {
         up: false,
         value: 21,
@@ -76,13 +76,13 @@ export class EarningService extends EarningData {
         ].join('/'),
         Math.round(this.currentValue),
       ],
-    };
+    };``
   }
 
-  getEarningLiveUpdateCardData(currency): Observable<any[]> {
-    const data = this.liveUpdateChartData[currency.toLowerCase()];
+  getEarningLiveUpdateCardData(currency: string): Observable<any[]> {
+    const data = this.liveUpdateChartData[currency.toLowerCase() as keyof typeof this.liveUpdateChartData];
     const newValue = this.generateRandomLiveChartData();
-
+    // data.liveChart = [];
     data.liveChart.shift();
     data.liveChart.push(newValue);
 
@@ -90,7 +90,7 @@ export class EarningService extends EarningData {
   }
 
   getEarningCardData(currency: string): Observable<LiveUpdateChart> {
-    const data = this.liveUpdateChartData[currency.toLowerCase()];
+    const data = this.liveUpdateChartData[currency.toLowerCase() as keyof typeof this.liveUpdateChartData];
 
     data.liveChart = this.getDefaultLiveChartData(150);
 

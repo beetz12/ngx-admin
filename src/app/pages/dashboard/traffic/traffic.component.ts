@@ -25,10 +25,10 @@ export class TrafficComponent implements OnDestroy {
 
   private alive = true;
 
-  trafficChartPoints: number[];
+  trafficChartPoints: number[] = [];
   type = 'month';
   types = ['week', 'month', 'year'];
-  currentTheme: string;
+  currentTheme: string = "";
 
   constructor(private themeService: NbThemeService,
               private trafficChartService: TrafficChartData) {

@@ -1,3 +1,22 @@
+// import { NgModule } from '@angular/core';
+// import { BrowserModule } from '@angular/platform-browser';
+
+// import { AppRoutingModule } from './app-routing.module';
+// import { AppComponent } from './app.component';
+
+// @NgModule({
+//   declarations: [
+//     AppComponent
+//   ],
+//   imports: [
+//     BrowserModule,
+//     AppRoutingModule
+//   ],
+//   providers: [],
+//   bootstrap: [AppComponent]
+// })
+// export class AppModule { }
+
 /**
  * @license
  * Copyright Akveo. All Rights Reserved.
@@ -20,6 +39,7 @@ import {
   NbToastrModule,
   NbWindowModule,
 } from '@nebular/theme';
+// import { NgxAuthModule } from './auth/auth.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -28,6 +48,7 @@ import {
     BrowserAnimationsModule,
     HttpClientModule,
     AppRoutingModule,
+    // NgxAuthModule,
     NbSidebarModule.forRoot(),
     NbMenuModule.forRoot(),
     NbDatepickerModule.forRoot(),
@@ -42,4 +63,6 @@ import {
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule {
+}
+

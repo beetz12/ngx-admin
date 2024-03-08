@@ -13,8 +13,8 @@ export class ContactsComponent implements OnDestroy {
 
   private alive = true;
 
-  contacts: any[];
-  recent: any[];
+  contacts: any[] = [];
+  recent: any[] = [];
 
   constructor(private userService: UserData) {
     forkJoin(

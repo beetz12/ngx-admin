@@ -3,6 +3,7 @@ import { AfterViewInit, Component, Input, OnDestroy } from '@angular/core';
 import { NbThemeService } from '@nebular/theme';
 import { LayoutService } from '../../../../@core/utils';
 import { ElectricityChart } from '../../../../@core/data/electricity';
+import * as echarts from 'echarts';
 
 @Component({
   selector: 'ngx-electricity-chart',
@@ -20,7 +21,7 @@ export class ElectricityChartComponent implements AfterViewInit, OnDestroy {
 
   private alive = true;
 
-  @Input() data: ElectricityChart[];
+  @Input() data: ElectricityChart[] = [];
 
   option: any;
   echartsIntance: any;
@@ -41,7 +42,7 @@ export class ElectricityChartComponent implements AfterViewInit, OnDestroy {
         delay(1),
       )
       .subscribe(config => {
-        const eTheme: any = config.variables.electricity;
+        const eTheme: any = config.variables?.['electricity'];
 
         this.option = {
           grid: {
@@ -182,7 +183,7 @@ export class ElectricityChartComponent implements AfterViewInit, OnDestroy {
     });
   }
 
-  onChartInit(echarts) {
+  onChartInit(echarts: any) {
     this.echartsIntance = echarts;
   }
 

@@ -15,7 +15,7 @@ export class ProfitChartService extends ProfitChartData {
     '2018',
   ];
 
-  private data = { };
+  private data = {} as any;
 
   constructor(private period: PeriodsService) {
     super();
@@ -72,6 +72,6 @@ export class ProfitChartService extends ProfitChartData {
   }
 
   getProfitChartData(period: string): ProfitChart {
-    return this.data[period];
+    return this.data[period as keyof typeof this.data];
   }
 }

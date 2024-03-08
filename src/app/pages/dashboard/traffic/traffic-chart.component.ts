@@ -2,6 +2,7 @@ import { delay, takeWhile } from 'rxjs/operators';
 import { AfterViewInit, Component, Input, OnDestroy } from '@angular/core';
 import { NbThemeService } from '@nebular/theme';
 import { LayoutService } from '../../../@core/utils';
+import * as echarts from 'echarts';
 
 @Component({
   selector: 'ngx-traffic-chart',
@@ -17,7 +18,7 @@ export class TrafficChartComponent implements AfterViewInit, OnDestroy {
 
   private alive = true;
 
-  @Input() points: number[];
+  @Input() points: number[] = [];
 
   type = 'month';
   types = ['week', 'month', 'year'];
@@ -40,7 +41,7 @@ export class TrafficChartComponent implements AfterViewInit, OnDestroy {
         takeWhile(() => this.alive),
       )
       .subscribe(config => {
-        const trafficTheme: any = config.variables.traffic;
+        const trafficTheme: any = config.variables?.['traffic'];
 
         this.option = Object.assign({}, {
           grid: {
@@ -158,7 +159,7 @@ export class TrafficChartComponent implements AfterViewInit, OnDestroy {
     });
   }
 
-  onChartInit(echarts) {
+  onChartInit(echarts: any) {
     this.echartsIntance = echarts;
   }
 

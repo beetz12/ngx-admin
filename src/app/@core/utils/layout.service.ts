@@ -9,9 +9,8 @@ export class LayoutService {
   protected layoutSizeChange$ = this.layoutSize$.pipe(
     shareReplay({ refCount: true }),
   );
-
-  changeLayoutSize() {
-    this.layoutSize$.next();
+  changeLayoutSize(size: any) {
+    this.layoutSize$.next(size);
   }
 
   onChangeLayoutSize(): Observable<any> {

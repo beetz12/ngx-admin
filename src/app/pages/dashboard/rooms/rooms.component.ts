@@ -20,12 +20,12 @@ import { map } from 'rxjs/operators';
 export class RoomsComponent implements OnDestroy {
 
   @HostBinding('class.expanded')
-  private expanded: boolean;
-  private selected: number;
+  private expanded: boolean = false;
+  private selected: number = 0;
 
-  isDarkTheme: boolean;
+  isDarkTheme: boolean = false;
 
-  breakpoint: NbMediaBreakpoint;
+  breakpoint!: NbMediaBreakpoint;
   breakpoints: any;
   themeSubscription: any;
   themeChangeSubscription: any;
@@ -44,7 +44,7 @@ export class RoomsComponent implements OnDestroy {
       .subscribe((isDark: boolean) => this.isDarkTheme = isDark);
   }
 
-  select(roomNumber) {
+  select(roomNumber: number) {
     if (this.isSelected(roomNumber)) {
       this.expand();
     } else {
@@ -66,7 +66,7 @@ export class RoomsComponent implements OnDestroy {
     return !this.expanded;
   }
 
-  private isSelected(roomNumber): boolean {
+  private isSelected(roomNumber: number): boolean {
     return this.selected === roomNumber;
   }
 

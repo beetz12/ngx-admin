@@ -10,11 +10,11 @@ import { Component, ElementRef, EventEmitter, Output, ViewChild } from '@angular
            #input
            [class.hidden]="!isInputShown"
            (blur)="hideInput()"
-           (input)="onInput($event)">
+           (input)="onInput($event.toString())">
   `,
 })
 export class SearchInputComponent {
-  @ViewChild('input', { static: true }) input: ElementRef;
+  @ViewChild('input', { static: true }) input!: ElementRef;
 
   @Output() search: EventEmitter<string> = new EventEmitter<string>();
 

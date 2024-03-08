@@ -12,12 +12,12 @@ import { Subject } from 'rxjs';
 export class RoomSelectorComponent implements OnInit, OnDestroy {
 
   private destroy$ = new Subject<void>();
-  private hideGrid: boolean;
+  private hideGrid: boolean = false;
 
   @Output() selectEvent: EventEmitter<number> = new EventEmitter();
 
   selectedRoom = null;
-  sortedRooms = [];
+  sortedRooms: any[] = [];
   viewBox = '-20 -20 618.88 407.99';
   isIE = !!(navigator.userAgent.match(/Trident/)
             || navigator.userAgent.match(/MSIE/)
@@ -107,9 +107,9 @@ export class RoomSelectorComponent implements OnInit, OnDestroy {
     });
   }
 
-  selectRoom(roomNumber) {
+  selectRoom(roomNumber: any) {
     this.selectEvent.emit(roomNumber);
-    this.selectedRoom = roomNumber;
+    this.selectedRoom = roomNumber.toString();
     this.sortRooms();
   }
 
