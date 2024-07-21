@@ -26,10 +26,14 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { NbAuthJWTToken, NbAuthModule, NbPasswordAuthStrategy } from '@nebular/auth';
+import {
+  NbAuthJWTToken,
+  NbAuthModule,
+  NbPasswordAuthStrategy,
+} from '@nebular/auth';
 import { CoreModule } from './@core/core.module';
 import { ThemeModule } from './@theme/theme.module';
-import { FigAppComponent } from './app.component';
+import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import {
   NbChatModule,
@@ -41,7 +45,6 @@ import {
   NbWindowModule,
 } from '@nebular/theme';
 
-
 const formSetting: any = {
   redirectDelay: 500,
   showMessages: {
@@ -49,12 +52,10 @@ const formSetting: any = {
   },
 };
 
-
 @NgModule({
-  declarations: [FigAppComponent],
+  declarations: [AppComponent],
   imports: [
     NbAuthModule.forRoot({
-
       strategies: [
         NbPasswordAuthStrategy.setup({
           name: 'email',
@@ -63,14 +64,14 @@ const formSetting: any = {
             key: 'access',
           },
           baseEndpoint: 'http://localhost:8000',
-           login: {
-             endpoint: '/api/login/',
-             method: 'post',
-           },
-           register: {
-             endpoint: '/api/register/',
-             method: 'post',
-           },
+          login: {
+            endpoint: '/api/login/',
+            method: 'post',
+          },
+          register: {
+            endpoint: '/api/register/',
+            method: 'post',
+          },
         }),
       ],
       forms: {
@@ -95,11 +96,9 @@ const formSetting: any = {
     NbChatModule.forRoot({
       messageGoogleMapKey: 'AIzaSyA_wNuCzia92MAmdLRzmqitRGvCF7wCZPY',
     }),
-    
+
     ThemeModule.forRoot(),
   ],
-  bootstrap: [FigAppComponent],
+  bootstrap: [AppComponent],
 })
-export class AppModule {
-}
-
+export class AppModule {}

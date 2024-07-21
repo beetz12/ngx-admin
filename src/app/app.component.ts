@@ -12,7 +12,7 @@ import { SeoService } from './@core/utils/seo.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class FigAppComponent implements OnInit {
+export class AppComponent implements OnInit {
   constructor(
     private analytics: AnalyticsService,
     private seoService: SeoService
