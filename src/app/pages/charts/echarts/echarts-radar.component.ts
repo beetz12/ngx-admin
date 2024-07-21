@@ -3,22 +3,18 @@ import { NbThemeService } from '@nebular/theme';
 
 @Component({
   selector: 'ngx-echarts-radar',
-  template: `
-    <div echarts [options]="options" class="echart"></div>
-  `,
+  template: ` <div echarts [options]="options" class="echart"></div> `,
 })
 export class EchartsRadarComponent implements AfterViewInit, OnDestroy {
   options: any = {};
   themeSubscription: any;
 
-  constructor(private theme: NbThemeService) {
-  }
+  constructor(private theme: NbThemeService) {}
 
   ngAfterViewInit() {
-    this.themeSubscription = this.theme.getJsTheme().subscribe(config => {
-
-      const colors: any = config.variables;
-      const echarts: any = config.variables.echarts;
+    this.themeSubscription = this.theme.getJsTheme().subscribe((config) => {
+      const colors: any = config.variables ? config.variables : {};
+      const echarts: any = config.variables ? config.variables['echarts'] : {};
 
       this.options = {
         backgroundColor: echarts.bg,

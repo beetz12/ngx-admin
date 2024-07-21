@@ -1,6 +1,6 @@
 import { ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NbAuthJWTToken, NbAuthModule, NbDummyAuthStrategy, NbPasswordAuthStrategy } from '@nebular/auth';
+import { NbAuthJWTToken, NbAuthModule, NbPasswordAuthStrategy } from '@nebular/auth';
 import { NbSecurityModule, NbRoleProvider } from '@nebular/security';
 import { of as observableOf } from 'rxjs';
 
@@ -111,36 +111,7 @@ const formSetting: any = {
 export const NB_CORE_PROVIDERS = [
   ...(MockDataModule.forRoot().providers || []),
   ...(DATA_SERVICES || []),
-  ...(NbAuthModule.forRoot({
-
-    strategies: [
-      NbPasswordAuthStrategy.setup({
-        name: 'email',
-        token: {
-          class: NbAuthJWTToken,
-          key: 'access',
-        },
-        baseEndpoint: 'http://localhost:8000',
-         login: {
-           endpoint: '/api/login/',
-           method: 'post',
-         },
-         register: {
-           endpoint: '/api/register/',
-           method: 'post',
-         },
-      }),
-    ],
-    forms: {
-      login: formSetting,
-      register: formSetting,
-      requestPassword: formSetting,
-      resetPassword: formSetting,
-      logout: formSetting,
-    },
-  }).providers,
-
-  NbSecurityModule.forRoot({
+  ...(NbSecurityModule.forRoot({
     accessControl: {
       guest: {
         view: '*',

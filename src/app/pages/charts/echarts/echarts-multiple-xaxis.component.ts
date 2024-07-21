@@ -17,8 +17,8 @@ export class EchartsMultipleXaxisComponent implements AfterViewInit, OnDestroy {
   ngAfterViewInit() {
     this.themeSubscription = this.theme.getJsTheme().subscribe(config => {
 
-      const colors: any = config.variables;
-      const echarts: any = config.variables.echarts;
+      const colors: any = config.variables ? config.variables : {};
+      const echarts: any = config.variables ? config.variables['echarts'] : {};
 
       this.options = {
         backgroundColor: echarts.bg,
@@ -58,7 +58,11 @@ export class EchartsMultipleXaxisComponent implements AfterViewInit, OnDestroy {
             },
             axisPointer: {
               label: {
+<<<<<<< HEAD
                 formatter: params => {
+=======
+                formatter: (params: any) => {
+>>>>>>> b47697a (fixed bootstrap import)
                   return (
                     'Precipitation  ' + params.value + (params.seriesData.length ? '：' + params.seriesData[0].data : '')
                   );
@@ -98,7 +102,11 @@ export class EchartsMultipleXaxisComponent implements AfterViewInit, OnDestroy {
             },
             axisPointer: {
               label: {
+<<<<<<< HEAD
                 formatter: params => {
+=======
+                formatter: (params: any) => {
+>>>>>>> b47697a (fixed bootstrap import)
                   return (
                     'Precipitation  ' + params.value + (params.seriesData.length ? '：' + params.seriesData[0].data : '')
                   );

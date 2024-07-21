@@ -2,18 +2,18 @@
 // import { BrowserModule } from '@angular/platform-browser';
 
 // import { AppRoutingModule } from './app-routing.module';
-// import { AppComponent } from './app.component';
+// import { FAppComponent } from './app.component';
 
 // @NgModule({
 //   declarations: [
-//     AppComponent
+//     FAppComponent
 //   ],
 //   imports: [
 //     BrowserModule,
 //     AppRoutingModule
 //   ],
 //   providers: [],
-//   bootstrap: [AppComponent]
+//   bootstrap: [FAppComponent]
 // })
 // export class AppModule { }
 
@@ -26,9 +26,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
+import { NbAuthJWTToken, NbAuthModule, NbPasswordAuthStrategy } from '@nebular/auth';
 import { CoreModule } from './@core/core.module';
 import { ThemeModule } from './@theme/theme.module';
-import { AppComponent } from './app.component';
+import { FigAppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import {
   NbChatModule,
@@ -39,16 +40,52 @@ import {
   NbToastrModule,
   NbWindowModule,
 } from '@nebular/theme';
-// import { NgxAuthModule } from './auth/auth.module';
+
+
+const formSetting: any = {
+  redirectDelay: 500,
+  showMessages: {
+    success: true,
+  },
+};
+
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [FigAppComponent],
   imports: [
+    NbAuthModule.forRoot({
+
+      strategies: [
+        NbPasswordAuthStrategy.setup({
+          name: 'email',
+          token: {
+            class: NbAuthJWTToken,
+            key: 'access',
+          },
+          baseEndpoint: 'http://localhost:8000',
+           login: {
+             endpoint: '/api/login/',
+             method: 'post',
+           },
+           register: {
+             endpoint: '/api/register/',
+             method: 'post',
+           },
+        }),
+      ],
+      forms: {
+        login: formSetting,
+        register: formSetting,
+        requestPassword: formSetting,
+        resetPassword: formSetting,
+        logout: formSetting,
+      },
+    }),
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
     AppRoutingModule,
-    // NgxAuthModule,
+    CoreModule.forRoot(),
     NbSidebarModule.forRoot(),
     NbMenuModule.forRoot(),
     NbDatepickerModule.forRoot(),
@@ -58,10 +95,10 @@ import {
     NbChatModule.forRoot({
       messageGoogleMapKey: 'AIzaSyA_wNuCzia92MAmdLRzmqitRGvCF7wCZPY',
     }),
-    CoreModule.forRoot(),
+    
     ThemeModule.forRoot(),
   ],
-  bootstrap: [AppComponent],
+  bootstrap: [FigAppComponent],
 })
 export class AppModule {
 }

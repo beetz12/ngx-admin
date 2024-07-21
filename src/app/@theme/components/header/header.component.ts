@@ -46,8 +46,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
               private themeService: NbThemeService,
               private layoutService: LayoutService,
               private breakpointService: NbMediaBreakpointsService,
-              private authService: NbAuthService) {
-
+              private authService: NbAuthService
+              ) {
                 this.authService.onTokenChange()
                 .subscribe((token: any) => {
                   if (token.isValid()) {
