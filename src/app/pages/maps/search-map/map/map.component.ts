@@ -7,7 +7,7 @@ import { PositionModel } from '../entity/position.model';
   styleUrls: ['./map.component.scss'],
 })
 export class MapComponent implements OnInit {
-  position: PositionModel = null;
+  position!: PositionModel;
   zoom: number = 1;
 
   @Input()
@@ -24,7 +24,7 @@ export class MapComponent implements OnInit {
       navigator.geolocation.getCurrentPosition((position) => {
         this.searchedPosition = new PositionModel(
           position.coords.latitude,
-          position.coords.longitude,
+          position.coords.longitude
         );
       });
     }
