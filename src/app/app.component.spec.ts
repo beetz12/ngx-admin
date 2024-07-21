@@ -1,11 +1,16 @@
 import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { FigAppComponent } from './app.component';
+import { AnalyticsService, SeoService } from './@core/utils';
 
 describe('FigAppComponent', () => {
   beforeEach(() => TestBed.configureTestingModule({
     imports: [RouterTestingModule],
-    declarations: [FigAppComponent]
+    declarations: [FigAppComponent],
+    providers: [
+      { provide: AnalyticsService, useValue: jasmine.createSpyObj('AnalyticsService', ['trackPageViews']) },
+      { provide: SeoService, useValue: jasmine.createSpyObj('SeoService', ['trackCanonicalChanges']) }
+    ]
   }));
 
   it('should create the app', () => {
